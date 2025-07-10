@@ -72,16 +72,3 @@
   line-height: 1.6;
   color: #666;
 }
-
-.hiddenSection h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.hiddenSection p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  line-height: 1.6;
-  color: #666;
-}

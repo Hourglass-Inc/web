@@ -8,7 +8,7 @@ export default function Home() {
         <p>This is the first section. Scroll down to see the smooth scrolling effect!</p>
       </section>
       
-      <section id="section-2" className={styles.hiddenSection}>
+      <section id="section-2" className={`${styles.section} ${styles.section4}`}>
         <h2>Section 2</h2>
         <p>Notice how smooth the scrolling feels? This is powered by Lenis.js!</p>
       </section>
