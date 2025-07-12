@@ -1,7 +1,29 @@
+@keyframes positionChange {
+    0% {
+        transform: translateY(-150px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: none !important; /* Remove that annoying blue outline */
+}
+
+/* Remove focus outlines for better aesthetics */
+*:focus,
+*:focus-visible,
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 html {
@@ -63,4 +85,12 @@ section p {
   font-size: 1.2rem;
   max-width: 600px;
   line-height: 1.6;
+}
+
+.navContainer {
+  transform: translateY(-150px);
+  z-index: 1000;
+  position: fixed;
+  width: 100vw;
+  animation: positionChange 0.5s ease-in-out forwards;
 }

@@ -7,7 +7,6 @@
 .heroSection {
   height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -28,20 +27,6 @@
   line-height: 1.6;
 }
 
-.hiddenSection {
-  height: 100vh;
-  padding: 2rem;
-  background: #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 100vh; /* Push it down so it appears behind the hero */
-  position: relative;
-  z-index: 1;
-}
-
 .section {
   height: 100vh;
   padding: 2rem;
@@ -50,25 +35,26 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 10;
 }
 
 .section3 {
-  background: #d0d0d0;
+  background: #1d1d1d;
 }
 
 .section4 {
-  background: #c0c0c0;
+  background: #252525;
 }
 
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: #ffffff;
 }
 
 .section p {
   font-size: 1.1rem;
   max-width: 600px;
   line-height: 1.6;
-  color: #666;
+  color: #d4d4d4;
 }

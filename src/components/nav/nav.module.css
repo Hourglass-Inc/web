@@ -1,0 +1,295 @@
+.navMobile {
+    display: none;
+}
+
+.nav {
+    backdrop-filter: blur(35px);
+    border-radius: 20px;
+    z-index: 1000;
+    position: fixed;
+    left: 50%;
+    top: 35px;
+    transform: translateX(-50%);
+    width: calc(100% - 120px);
+    background : rgba(0, 0, 0, 0.599);
+    border-style : Solid;
+    border-color : rgba(0, 0, 0, .2);
+    border-width : 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    a {
+        text-decoration: none;
+        color: white;
+        font-weight: 300;
+        font-size: 16px;
+
+    }
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: white;
+    font-weight: 300;
+    a {
+        border-radius: 8px;
+        padding: 6px 16px;
+        transition: background-color 0.2s ease;
+
+    }
+    .active {
+        font-weight: 500;
+        background : rgba(66, 66, 66, .42);    
+    }
+    a:hover {
+        background : rgba(56, 56, 56, 0.544);
+    }
+    a:active {
+        background : rgba(0, 0, 0, 0.42);
+    }
+}
+
+.cta {
+    padding: 10px;
+    width: fit-content;
+    .communityButton {
+        background : linear-gradient(-90deg, rgba(255, 156, 245, 1) 0%, rgba(165, 84, 232, 1) 31.61%, rgba(135, 125, 255, 1) 66.25%, rgba(125, 212, 255, 1) 100%);
+        border-color : rgba(255, 255, 255, 0.43);
+        border-width : 2px;   
+        border-style: solid;    
+        color: black;
+        border-radius: 12px;
+        cursor: pointer;
+        padding: 0 20px;
+        font-weight: 700;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        height: 40px;
+    }
+}
+
+/* Community modal styles */
+.communityLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.communityLink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.communityLink:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.communityLink:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.logoBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.logoBox svg {
+    color: white;
+}
+
+.linkText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.appName {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.2;
+}
+
+/* Hamburger menu button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(159, 159, 159, 0.08);
+    border: 0px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    padding: 16px;
+    margin: 10px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.hamburgerLine {
+    width: 16px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transform-origin: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+.closeButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding: 20px 20px 60px 20px; /* Extra bottom padding for thumb accessibility */
+}
+
+.closeButton {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.closeButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 880px) {
+    .nav {
+        width: calc(100% - 40px);
+        top: 20px;
+        .cta {
+            display: none;
+        }
+    }
+
+    .navLinks {
+        display: none; /* Hide desktop links on mobile */
+    }
+    
+    .hamburger {
+        display: flex; /* Show hamburger menu on mobile */
+    }
+    
+    .navMobile {
+        background-size: 40px 40px;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.294) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.294) 1px, transparent 1px);
+        background-position: center;
+        background-color: black;
+        display: flex; /* Show mobile nav */
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        z-index: 1010;
+        backdrop-filter: blur(20px);
+        .cta {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+    .linkList {
+        margin-top: 14vh;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: calc(100% - 80px);
+        text-align: left;
+        a {
+            font-size: 40px;
+            font-weight: 100;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        a.active {
+            font-size: 62px;
+            font-weight: 500;
+        }
+    }
+}

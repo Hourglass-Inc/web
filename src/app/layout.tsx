@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import LenisProvider from "@/components/lenis-provider";
+import NavContainer from "@/components/nav/nav-container";
 
 export const metadata: Metadata = {
   title: "Tymli",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <NavContainer />
         <LenisProvider>
           {children}
         </LenisProvider>

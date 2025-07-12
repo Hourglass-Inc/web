@@ -1,0 +1,45 @@
+@keyframes animate {
+    0% {
+        transform: translateX(-500px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+    
+}
+
+.ctaButtons {
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transform: translateX(-500px);
+    animation: animate 0.5s ease forwards;
+    a {
+        color: white;
+        background : rgba(26, 26, 26, 0.64);
+        border-style : Solid;
+        border-color : rgba(51, 51, 51, 0.64);
+        border-width : 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        height: 50px;
+        gap: 10px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+    a:hover {
+        background : rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.757);
+        color: black;
+    }
+
+    a:active {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+}
