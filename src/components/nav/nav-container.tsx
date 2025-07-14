@@ -27,7 +27,7 @@ export default function NavContainer() {
     <div 
       className="navContainer"
       style={{
-        animationDelay: shouldApplyDelay ? '5.2s' : '0s'
+        animationDelay: shouldApplyDelay ? '7.9s' : '0s'
       }}
     >
       <Nav />

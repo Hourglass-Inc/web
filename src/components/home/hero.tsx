@@ -5,10 +5,13 @@ import { motion, useScroll } from "motion/react"
 import Image from 'next/image';
 import { Video } from './video';
 import CtaButtons from './cta-buttons/cta-buttons';
+import Aurora from '@/modules/Aurora/Aurora';
+import DecryptedText from '@/modules/DecryptedText/DecryptedText';
 export default function Hero() {
     const [y, setY] = useState(0);
     const [initialY, setInitialY] = useState<number | null>(null);
     const [isInitialized, setIsInitialized] = useState(false);
+    const [shouldShowVideo, setShouldShowVideo] = useState(false);
     
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -25,6 +28,7 @@ export default function Hero() {
         console.log('Mount scroll check - scrollYProgress:', currentProgress, 'calculatedY:', calculatedY);
         
         setInitialY(calculatedY);
+        setShouldShowVideo(calculatedY <= 33.34);
         setIsInitialized(true);
     }, [scrollYProgress]);
 
@@ -36,6 +40,7 @@ export default function Hero() {
             // Capture initial y value on first update if not already set
             if (initialY === null) {
                 setInitialY(newY);
+                setShouldShowVideo(newY <= 33.34);
                 setIsInitialized(true);
                 console.log('Initial Y captured from scroll:', newY);
             }
@@ -44,9 +49,20 @@ export default function Hero() {
         return () => unsubscribe();
     }, [scrollYProgress, initialY]);
 
-    // Determine if we should show video or image based on initial scroll position
-    const shouldShowVideo = isInitialized ? (initialY !== null ? initialY <= 33.34 : true) : false;
-    
+    // Add resize listener to recalculate video display
+    useEffect(() => {
+        const handleResize = () => {
+            // Recalculate based on current scroll position
+            const currentProgress = scrollYProgress.get();
+            const calculatedY = currentProgress * 100;
+            setShouldShowVideo(calculatedY <= 33.34);
+            console.log('Resize recalculation - Y:', calculatedY, 'shouldShowVideo:', calculatedY <= 33.34);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [scrollYProgress]);
+
     console.log('shouldShowVideo:', shouldShowVideo, 'initialY:', initialY, 'isInitialized:', isInitialized);
 
     function getPercentage() {
@@ -74,10 +90,27 @@ export default function Hero() {
                             // Show nothing while determining initial state
                             <div style={{ width: '100%', height: '100%', backgroundColor: '#000' }} />
                         ) : shouldShowVideo ? (
-                            <Video 
-                                y={y}
-                                src="https://ovzgadca8zgb0qko.public.blob.vercel-storage.com/bghome.webm"
-                            />
+                            <>
+                                <Video 
+                                    y={y}
+                                    src="https://ovzgadca8zgb0qko.public.blob.vercel-storage.com/bghome.webm"
+                                />
+                                <Image 
+                                    src="/bg.png"
+                                    alt="Hero Background"
+                                    fill
+                                    style={{
+                                        objectFit: 'cover',
+                                        objectPosition: 'center',
+                                        display: 'block',
+                                        zIndex: -1, 
+
+                                    }}
+                                    quality={100}
+                                    priority
+                                />
+                            </>
+
                         ) : (
                             <Image 
                                 src="/bg.png"
@@ -88,6 +121,8 @@ export default function Hero() {
                                     objectPosition: 'center',
                                     display: 'block',
                                 }}
+                                quality={100}
+                                priority
                             />
                         )}
                     </div>
@@ -97,7 +132,7 @@ export default function Hero() {
                             marginBottom: "-30px",
                         }}>
                             <p style={{
-                                animationDelay: y >= 33.34 ? "0s" : '4.9s',
+                                animationDelay: y >= 33.34 ? "0s" : '7.4s',
                             }}>
                                 Producitvity Tools
                             </p>
@@ -106,7 +141,7 @@ export default function Hero() {
                             fontWeight: '300',
                         }}>
                             <p style={{
-                                animationDelay: y >= 33.34 ? ".2s" : '5.1s',
+                                animationDelay: y >= 33.34 ? ".2s" : '7.6s',
                             }}>
                                 Done Right
                             </p>
@@ -118,7 +153,10 @@ export default function Hero() {
                     position: y < 66.66 ? 'fixed' : 'absolute',
                     top: y < 66.66 ? '0' : '100vh',
                 }} className={styles.titleSection}>
-                    <h2>
+                    <h2 style={{
+                    position: y > 66.66 ? 'fixed' : 'absolute',
+
+                    }}>
                         <motion.span
                             style={{ display: 'block', overflow: 'hidden' }}
                         >
@@ -150,6 +188,12 @@ export default function Hero() {
                             </motion.span>
                         </motion.span>
                     </h2>
+                    <Aurora 
+                        colorStops={["#75FFF6", "#B78DF7", "#ff63e2"]}
+                        blend={0.5}
+                        amplitude={1.0}
+                        speed={1}
+                    />
                 </section>
             </div>
         </motion.div>

@@ -9,10 +9,9 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
 # testing
 /coverage
-
+/cache
 # next.js
 /.next/
 /out/

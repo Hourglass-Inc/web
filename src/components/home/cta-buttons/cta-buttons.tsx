@@ -10,7 +10,7 @@ export default function CtaButtons({
 }) {
     return (
         <div style={{
-            animationDelay: y && y >= 33.34 ? ".3s" : '5.2s',
+            animationDelay: y && y >= 33.34 ? ".3s" : '7.7s',
         }} className={styles.ctaButtons}>
             <Link href={"https://discord.gg/<inv>"}  target={"_blank"} className={styles.primaryButton}>
                 <FaDiscord style={{

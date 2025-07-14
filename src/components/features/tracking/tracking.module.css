@@ -1,0 +1,283 @@
+.trackingContainer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 
+        0 -20px 60px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 100px rgba(168, 85, 247, 0.1);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 320px;
+  width: 100%;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgba(7, 7, 7, 0.39);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerIcon {
+  color: #9ca3af;
+  font-size: 18px;
+}
+
+.headerText {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.applicationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.applicationItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+.applicationItem:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.applicationInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.applicationName {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.applicationCategory {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.applicationTime {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.appContainer {
+    box-shadow: 
+        10px 0px 52px rgba(0, 0, 0, 0.6),
+        0 10px 40px rgba(168, 85, 247, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 340px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(30, 30, 30, 0.9) 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.appContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, transparent 50%, rgba(6, 182, 212, 0.1) 100%);
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.appContainer:hover::before {
+    opacity: 1;
+}
+
+.text {
+    text-align: right;
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2rem;
+    margin-left: 2rem;
+}
+
+.text h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin: 0 0 2rem 0;
+    color: #ffffff;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        0 4px 12px rgba(168, 85, 247, 0.2);
+    position: relative;
+    letter-spacing: -0.02em;
+}
+
+.text p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0;
+    backdrop-filter: blur(20px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out 0.7s both;
+    max-width: 450px;
+    font-weight: 400;
+}
+
+.text p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: shimmer 4s infinite;
+}
+
+.text p::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, transparent 50%, rgba(6, 182, 212, 0.1) 100%);
+    border-radius: 16px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.text:hover p::after {
+    opacity: 1;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .trackingContainer {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+        min-height: auto;
+    }
+
+    .appContainer {
+        margin: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .text {
+        margin-left: 0;
+        padding: 1rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .text h2 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        text-align: center;
+    }
+
+    .text p {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .trackingContainer {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .appContainer {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .text h2 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .text p {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+    }
+}
