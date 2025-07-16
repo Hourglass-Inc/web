@@ -1,13 +1,25 @@
 "use client";
 import styles from './focus.module.css';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function Focus() {
     const containerRef = useRef(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const blurredVideoRef = useRef<HTMLVideoElement>(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         if (isInView && videoRef.current && blurredVideoRef.current) {
@@ -54,20 +66,20 @@ export default function Focus() {
             
             <motion.div 
                 className={styles.textContainer}
-                initial={{ y: 50, opacity: 0 }}
-                animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+                initial={{ y: isMobile ? 30 : 50, opacity: 0 }}
+                animate={isInView ? { y: 0, opacity: 1 } : { y: isMobile ? 30 : 50, opacity: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
                 <motion.h2
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                    initial={{ y: isMobile ? 20 : 30, opacity: 0 }}
+                    animate={isInView ? { y: 0, opacity: 1 } : { y: isMobile ? 20 : 30, opacity: 0 }}
                     transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
                 >
                     Focus Mode
                 </motion.h2>
                 <motion.p
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    initial={{ y: isMobile ? 15 : 20, opacity: 0 }}
+                    animate={isInView ? { y: 0, opacity: 1 } : { y: isMobile ? 15 : 20, opacity: 0 }}
                     transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
                 >
                     Stay in the zone with our distraction-free focus mode

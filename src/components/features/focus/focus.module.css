@@ -61,3 +61,106 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .focusContainer {
+        width: 50%;
+    }
+    
+    .textContainer {
+        padding: 44px;
+    }
+    
+    .textContainer h2 {
+        font-size: 60px;
+    }
+    
+    .textContainer p {
+        font-size: 18px;
+        padding: 10px 24px;
+    }
+}
+
+/* Medium screens - tablets */
+@media (max-width: 1199px) and (min-width: 950px) {
+    .focusContainer {
+        width: 70%;
+    }
+    
+    .textContainer {
+        padding: 32px;
+    }
+    
+    .textContainer h2 {
+        font-size: 45px;
+    }
+    
+    .textContainer p {
+        font-size: 15px;
+        padding: 7px 18px;
+    }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 950px) and (min-width: 481px) {
+    .focusContainer {
+        width: 100%;
+    }
+    
+    .textContainer {
+        padding: 24px;
+    }
+    
+    .textContainer h2 {
+        font-size: 36px;
+    }
+    
+    .textContainer p {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .focusContainer {
+        width: 95%;
+    }
+    
+    .textContainer {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .textContainer h2 {
+        font-size: 28px;
+    }
+    
+    .textContainer p {
+        font-size: 12px;
+        padding: 5px 12px;
+        margin: 8px auto 0;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .focusContainer {
+        width: 98%;
+        border-radius: 8px;
+    }
+    
+    .textContainer {
+        padding: 16px;
+    }
+    
+    .textContainer h2 {
+        font-size: 24px;
+    }
+    
+    .textContainer p {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+}

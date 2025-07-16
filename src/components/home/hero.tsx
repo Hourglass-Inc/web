@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Video } from './video';
 import CtaButtons from './cta-buttons/cta-buttons';
 import Aurora from '@/modules/Aurora/Aurora';
-import DecryptedText from '@/modules/DecryptedText/DecryptedText';
 export default function Hero() {
     const [y, setY] = useState(0);
     const [initialY, setInitialY] = useState<number | null>(null);
@@ -71,7 +70,7 @@ export default function Hero() {
 
     return (
         <motion.div>
-            <div ref={heroRef} className={styles.heroSection}>
+            <div ref={heroRef} id="hero-section" className={styles.heroSection}>
                 <section
                 style={{
                     borderBottomLeftRadius: y > 33.34 ? 75 : 0,
@@ -134,7 +133,7 @@ export default function Hero() {
                             <p style={{
                                 animationDelay: y >= 33.34 ? "0s" : '7.4s',
                             }}>
-                                Producitvity Tools
+                                Productivity Tools
                             </p>
                         </h1>
                         <h1 style={{
@@ -149,12 +148,12 @@ export default function Hero() {
                     </div>
                 </section>
 
-                <section id="features" style={{
-                    position: y < 66.66 ? 'fixed' : 'absolute',
+                <section style={{
+                    position: y < 66.66 ? y >= 1 ? 'fixed' : 'absolute' : 'absolute',
                     top: y < 66.66 ? '0' : '100vh',
                 }} className={styles.titleSection}>
                     <h2 style={{
-                    position: y > 66.66 ? 'fixed' : 'absolute',
+                    position: y > 66.66 ? y == 1 ? 'absolute' :'fixed' : 'absolute',
 
                     }}>
                         <motion.span

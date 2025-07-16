@@ -5,6 +5,8 @@ import styles from './nav.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useScrollSpy } from '@/hooks/use-scroll-spy';
+import { usePathname } from 'next/navigation';
 
 // Animation variants for the community links
 const communityLinksVariants = {
@@ -117,6 +119,25 @@ const closeButtonVariants = {
 export default function Nav() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
+    const pathname = usePathname();
+    
+    // Define the sections to spy on - try both hero section IDs
+    const sectionIds = ['hero-section', 'hero', 'features'];
+    const activeSection = useScrollSpy(sectionIds);
+    
+    // Helper function to determine if a nav link should be active
+    const isNavLinkActive = (href: string) => {
+        if (href === '/') {
+            // Home link is active when on home page and hero section is active or no section is active
+            return pathname === '/' && (activeSection === 'hero-section' || activeSection === 'hero' || activeSection === '');
+        }
+        if (href === '/#features') {
+            // Features link is active when features section is active
+            return pathname === '/' && activeSection === 'features';
+        }
+        // For other routes, use pathname matching
+        return pathname === href;
+    };
     
     return (
         <>
@@ -137,10 +158,9 @@ export default function Nav() {
                     <a href="/">Tymli</a>
                 </div>
                 <div className={styles.navLinks}>
-                    <NavLink href="/">Home</NavLink>
-                    <NavLink href="/#features">Features</NavLink>
-                    <NavLink href="/about">About</NavLink>
-                    <NavLink href="/blog">Blog</NavLink>
+                    <NavLink href="/" isActive={isNavLinkActive('/')}>Home</NavLink>
+                    <NavLink href="/#features" isActive={isNavLinkActive('/#features')}>Features</NavLink>
+                    <NavLink href="/about" isActive={isNavLinkActive('/about')}>About</NavLink>
                 </div>
                 <div className={styles.cta}>
                     <motion.button 
@@ -258,22 +278,17 @@ export default function Nav() {
                     >
                         <motion.div variants={mobileNavLinkVariants}>
                             <div onClick={() => setMenuOpen(false)}>
-                                <NavLink href="/">Home</NavLink>
+                                <NavLink href="/" isActive={isNavLinkActive('/')}>Home</NavLink>
                             </div>
                         </motion.div>
                         <motion.div variants={mobileNavLinkVariants}>
                             <div onClick={() => setMenuOpen(false)}>
-                                <NavLink href="/#features">Features</NavLink>
+                                <NavLink href="/#features" isActive={isNavLinkActive('/#features')}>Features</NavLink>
                             </div>
                         </motion.div>
                         <motion.div variants={mobileNavLinkVariants}>
                             <div onClick={() => setMenuOpen(false)}>
-                                <NavLink href="/about">About</NavLink>
-                            </div>
-                        </motion.div>
-                        <motion.div variants={mobileNavLinkVariants}>
-                            <div onClick={() => setMenuOpen(false)}>
-                                <NavLink href="/blog">Blog</NavLink>
+                                <NavLink href="/about" isActive={isNavLinkActive('/about')}>About</NavLink>
                             </div>
                         </motion.div>
                     </motion.div>

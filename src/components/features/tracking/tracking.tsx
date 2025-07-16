@@ -132,7 +132,7 @@ export default function Tracking() {
                         display: 'block',
                         zIndex: -1,
                         objectFit: 'cover',
-                        objectPosition: 'center',
+                        objectPosition: 'right',
                     }}
                     quality={100}
                     priority

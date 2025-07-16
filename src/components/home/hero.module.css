@@ -157,8 +157,7 @@
             margin: 0 !important;
             margin-bottom: 0;
             font-size: 32px;
-            transform: translateY(0);
-            animation: none;
+            animation-delay: 0s !important;
         }
     }
 

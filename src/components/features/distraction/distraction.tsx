@@ -2,7 +2,7 @@
 import { transform } from 'next/dist/build/swc/generated-native';
 import styles from './distraction.module.css';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { 
     FaInstagram, 
     FaTiktok, 
@@ -40,6 +40,18 @@ import { SiTinder, SiUbereats, SiDoordash, SiCanva, SiVsco, SiNetflix, SiEpicgam
 export default function Distraction() {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
     
     const distractingApps = [
         { icon: FaInstagram, name: 'Instagram', color: '#E4405F' },
@@ -148,7 +160,7 @@ export default function Distraction() {
     const textVariants = {
         hidden: { 
             opacity: 0,
-            transform: 'translateX(-50%) translateY(-120px)'
+            transform: isMobile ? 'translateX(-50%) translateY(-80px)' : 'translateX(-50%) translateY(-120px)'
         },
         visible: {
             opacity: 1,
@@ -157,7 +169,7 @@ export default function Distraction() {
                 type: "spring" as const,
                 damping: 20,
                 stiffness: 100,
-                delay: 0.5
+                delay: isMobile ? 0.3 : 0.5
             }
         }
     };

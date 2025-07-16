@@ -146,35 +146,116 @@
     }
 }
 
-@media (max-width: 768px) {
+/* Large screens */
+@media (min-width: 1200px) {
     .distractionContainer {
-        width: 90%;
+        width: 50%;
+        padding: 2.5rem;
+    }
+    
+    .appsGrid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .textContainer h2 {
+        font-size: 60px;
+    }
+    
+    .textContainer p {
+        font-size: 18px;
+    }
+}
+
+/* Medium screens - tablets */
+@media (max-width: 1199px) and (min-width: 769px) {
+    .distractionContainer {
+        width: 70%;
+        padding: 2rem;
+    }
+    
+    .appsGrid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 1rem;
+        transform: rotateX(20deg) translateX(-50%) translateY(150px);
+    }
+    
+    .textContainer h2 {
+        font-size: 45px;
+    }
+    
+    .textContainer p {
+        font-size: 15px;
+    }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 768px) and (min-width: 950px) {
+    .distractionContainer {
+        width: 85%;
         padding: 1.5rem;
         perspective: 800px;
     }
     
     .appsGrid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 0.8rem;
-        max-width: 320px;
-        transform: rotateX(12deg) translateZ(15px);
-    }
-
-    .appsGrid:hover {
-        transform: rotateX(10deg) translateZ(20px);
+        max-width: 360px;
+        transform: rotateX(15deg) translateX(-50%) translateY(120px);
     }
     
     .iconWrapper {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
     }
     
     .icon {
-        font-size: 16px;
+        font-size: 18px;
     }
     
     .appName {
-        font-size: 0.6rem;
-        max-width: 40px;
+        font-size: 0.65rem;
+        max-width: 42px;
+    }
+    
+    .textContainer {
+        top: 40px;
+    }
+    
+    .textContainer h2 {
+        font-size: 36px;
+    }
+    
+    .textContainer p {
+        font-size: 14px;
+        padding: 6px 16px;
     }
 }
+
+/* Mobile phones */
+@media (max-width: 950px) {
+    .distractionContainer {
+        width: 100%;
+        height: 350px;
+    }
+    
+    .appName {
+        font-size: 0.55rem;
+        max-width: 35px;
+    }
+    
+    .textContainer {
+        top: 30px;
+    }
+    
+    .textContainer h2 {
+        font-size: 28px;
+    }
+    
+    .textContainer p {
+        font-size: 12px;
+        padding: 5px 12px;
+        margin-top: 8px;
+    }
+}
+
