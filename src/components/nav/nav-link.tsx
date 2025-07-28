@@ -38,6 +38,24 @@ export function NavLink({ href, children, isActive: externalIsActive }: NavLinkP
                 // Navigate to home page with hash, let the useHashScroll hook handle the scrolling
                 router.push(`/${href}`); // This will navigate to /#features
             }
+        } else if (href === '/' && pathname === '/') {
+            // Special handling for home link when already on home page
+            e.preventDefault();
+            const heroElement = document.getElementById('hero-section') || document.getElementById('hero');
+            if (heroElement && lenis) {
+                lenis.scrollTo(heroElement, {
+                    duration: 1.5,
+                    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                });
+            } else {
+                // Fallback: scroll to top
+                if (lenis) {
+                    lenis.scrollTo(0, {
+                        duration: 1.5,
+                        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    });
+                }
+            }
         }
     };
 
@@ -54,7 +72,11 @@ export function NavLink({ href, children, isActive: externalIsActive }: NavLinkP
     }
 
     return (
-        <Link href={href} className={isActive ? styles.active : ''}>
+        <Link 
+            href={href} 
+            className={isActive ? styles.active : ''} 
+            onClick={handleClick}
+        >
             {children}
         </Link>
     );

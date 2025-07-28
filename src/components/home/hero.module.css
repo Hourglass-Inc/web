@@ -79,11 +79,11 @@
     position: fixed;
     left: 0;
     background: 
-        radial-gradient(ellipse at bottom right, #000000, transparent),
-        radial-gradient(ellipse at bottom left, #000000, transparent),
-        radial-gradient(ellipse at top left, #c363ff, transparent),
-        radial-gradient(ellipse at top right, #63fff7, transparent),
-        radial-gradient(ellipse at center right, #ff7cd3, transparent);
+    radial-gradient(ellipse at bottom right, #000000, transparent),
+    radial-gradient(ellipse at bottom left, #000000, transparent),
+    radial-gradient(ellipse at top left, #c363ff, transparent),
+    radial-gradient(ellipse at top right, #63fff7, transparent),
+    radial-gradient(ellipse at center right, #ff7cd3, transparent);
     h2 {
         top: 50%;
         transform: translateY(-50%);
@@ -168,5 +168,17 @@
         video {
             display: none;
         }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    .highlight {
+        font-weight: 700;
+        font-size: 5rem;
+    }
+
+    .hero{
+        height: calc(100vh - 80px);
     }
 }

@@ -133,7 +133,7 @@ export default function Hero() {
                             <p style={{
                                 animationDelay: y >= 33.34 ? "0s" : '7.4s',
                             }}>
-                                Productivity Tools
+                                Productivity Tool
                             </p>
                         </h1>
                         <h1 style={{
@@ -168,7 +168,7 @@ export default function Hero() {
                                     ease: [0.6, -0.05, 0.01, 0.99]
                                 }}
                             >
-                                BUT WHY
+                                <span className={styles.highlight}>BUT WHY</span>
                             </motion.span>
                         </motion.span>
                         <motion.span
@@ -183,7 +183,7 @@ export default function Hero() {
                                     ease: [0.6, -0.05, 0.01, 0.99]
                                 }}
                             >
-                                TYMLI?
+                                <span className={styles.highlight}>TYMLI?</span>
                             </motion.span>
                         </motion.span>
                     </h2>

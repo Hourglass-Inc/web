@@ -128,8 +128,8 @@ export default function Nav() {
     // Helper function to determine if a nav link should be active
     const isNavLinkActive = (href: string) => {
         if (href === '/') {
-            // Home link is active when on home page and hero section is active or no section is active
-            return pathname === '/' && (activeSection === 'hero-section' || activeSection === 'hero' || activeSection === '');
+            // Home link is active when on home page and either hero section is active or no specific section is detected
+            return pathname === '/' && (!activeSection || activeSection === 'hero-section' || activeSection === 'hero');
         }
         if (href === '/#features') {
             // Features link is active when features section is active
