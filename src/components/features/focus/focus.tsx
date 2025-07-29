@@ -2,6 +2,9 @@
 import styles from './focus.module.css';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
+
+const MotionImage = motion(Image);
 
 export default function Focus() {
     const containerRef = useRef(null);
@@ -30,40 +33,21 @@ export default function Focus() {
 
     return (
         <div ref={containerRef} className={styles.focusContainer}>
-            <motion.video 
-                ref={videoRef}
-                className={styles.mainVideo}
-                muted 
-                playsInline
-                initial={{ scale: 1.2, opacity: 0 }}
-                animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.2, opacity: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                style={
-                    {
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                    }
-                }>
-            <source src={"https://ovzgadca8zgb0qko.public.blob.vercel-storage.com/focus.webm"} type="video/mp4" />
-            Your browser does not support the video tag.
-            </motion.video>
-            
-            <motion.div 
-                className={styles.blurredBackground}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-            >
-                <video 
-                    ref={blurredVideoRef}
-                    className={styles.blurredVideo}
-                    muted 
-                    playsInline>
-                <source src={"https://ovzgadca8zgb0qko.public.blob.vercel-storage.com/focus.webm"} type="video/mp4" />
-                </video>
-            </motion.div>
-            
+            {/* Animate the background image into view */}
+            <MotionImage
+                src="/focus.webp"
+                alt="Focus Background"
+                fill
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                }}
+                initial={{ y: isMobile ? 30 : 50, opacity: 0 }}
+                animate={isInView ? { y: 0, opacity: 1 } : { y: isMobile ? 30 : 50, opacity: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            />
             <motion.div 
                 className={styles.textContainer}
                 initial={{ y: isMobile ? 30 : 50, opacity: 0 }}

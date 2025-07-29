@@ -3,6 +3,7 @@ import "./globals.css";
 import LenisProvider from "@/components/lenis-provider";
 import NavContainer from "@/components/nav/nav-container";
 import Footer from "@/components/footer/footer";
+import { NavigationProvider } from "@/contexts/navigation-context";
 
 export const metadata: Metadata = {
   title: "Tymli",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavContainer />
-        <LenisProvider>
-          {children}
-          <Footer />
-        </LenisProvider>
+        <NavigationProvider>
+          <NavContainer />
+          <LenisProvider>
+            {children}
+            <Footer />
+          </LenisProvider>
+        </NavigationProvider>
       </body>
     </html>
   );

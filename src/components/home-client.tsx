@@ -38,7 +38,7 @@ export default function HomeClient() {
         </div>
       </section>
       
-      <section id="section-4" style={{
+      <section id="newsletter" style={{
         zIndex: 10,
         display: 'flex',
         justifyContent: 'center',

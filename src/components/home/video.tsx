@@ -4,16 +4,21 @@ import { useEffect, useRef, useState } from "react";
 export function Video({
     src,
     onEnded,
+    isInternallyNavigated,
     y
 }: {
     src: string;
     onEnded?: () => void;
+    isInternallyNavigated?: boolean;
     y?: number;
 }) {
   const lenis = useLenis();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoEnded, setVideoEnded] = useState(false);
-
+  if (isInternallyNavigated) {
+    // If the user navigated from another internal page, we don't want to disable scrolling
+    return null;
+  }
   // Disable scrolling when component mounts
   useEffect(() => {
     const checkViewportAndUpdateScroll = () => {

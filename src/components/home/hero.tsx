@@ -6,12 +6,16 @@ import Image from 'next/image';
 import { Video } from './video';
 import CtaButtons from './cta-buttons/cta-buttons';
 import Aurora from '@/modules/Aurora/Aurora';
+import { useNavigation } from '@/contexts/navigation-context';
 export default function Hero() {
     const [y, setY] = useState(0);
     const [initialY, setInitialY] = useState<number | null>(null);
     const [isInitialized, setIsInitialized] = useState(false);
     const [shouldShowVideo, setShouldShowVideo] = useState(false);
+    const { hasNavigatedFromInternalPage } = useNavigation();
     
+
+
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: heroRef,
@@ -27,9 +31,10 @@ export default function Hero() {
         console.log('Mount scroll check - scrollYProgress:', currentProgress, 'calculatedY:', calculatedY);
         
         setInitialY(calculatedY);
-        setShouldShowVideo(calculatedY <= 33.34);
+        // Don't show video if user navigated from another internal page
+        setShouldShowVideo(!hasNavigatedFromInternalPage && calculatedY <= 33.34);
         setIsInitialized(true);
-    }, [scrollYProgress]);
+    }, [scrollYProgress, hasNavigatedFromInternalPage]);
 
     useEffect(() => {
         const unsubscribe = scrollYProgress.on("change", (latest) => {
@@ -39,14 +44,15 @@ export default function Hero() {
             // Capture initial y value on first update if not already set
             if (initialY === null) {
                 setInitialY(newY);
-                setShouldShowVideo(newY <= 33.34);
+                // Don't show video if user navigated from another internal page
+                setShouldShowVideo(!hasNavigatedFromInternalPage && newY <= 33.34);
                 setIsInitialized(true);
                 console.log('Initial Y captured from scroll:', newY);
             }
         });
 
         return () => unsubscribe();
-    }, [scrollYProgress, initialY]);
+    }, [scrollYProgress, initialY, hasNavigatedFromInternalPage]);
 
     // Add resize listener to recalculate video display
     useEffect(() => {
@@ -54,15 +60,16 @@ export default function Hero() {
             // Recalculate based on current scroll position
             const currentProgress = scrollYProgress.get();
             const calculatedY = currentProgress * 100;
-            setShouldShowVideo(calculatedY <= 33.34);
-            console.log('Resize recalculation - Y:', calculatedY, 'shouldShowVideo:', calculatedY <= 33.34);
+            // Don't show video if user navigated from another internal page
+            setShouldShowVideo(!hasNavigatedFromInternalPage && calculatedY <= 33.34);
+            console.log('Resize recalculation - Y:', calculatedY, 'shouldShowVideo:', !hasNavigatedFromInternalPage && calculatedY <= 33.34);
         };
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, [scrollYProgress]);
+    }, [scrollYProgress, hasNavigatedFromInternalPage]);
 
-    console.log('shouldShowVideo:', shouldShowVideo, 'initialY:', initialY, 'isInitialized:', isInitialized);
+    console.log('shouldShowVideo:', shouldShowVideo, 'initialY:', initialY, 'isInitialized:', isInitialized, 'hasNavigatedFromInternalPage:', hasNavigatedFromInternalPage);
 
     function getPercentage() {
         return y < 66.66 ? y / 100 : 1 - (y - 66.66) / 33.34;
@@ -91,11 +98,12 @@ export default function Hero() {
                         ) : shouldShowVideo ? (
                             <>
                                 <Video 
+                                    isInternallyNavigated={hasNavigatedFromInternalPage}
                                     y={y}
                                     src="https://ovzgadca8zgb0qko.public.blob.vercel-storage.com/bghome.webm"
                                 />
                                 <Image 
-                                    src="/bg.png"
+                                    src="/bg.webp"
                                     alt="Hero Background"
                                     fill
                                     style={{
@@ -105,7 +113,7 @@ export default function Hero() {
                                         zIndex: -1, 
 
                                     }}
-                                    quality={100}
+                                    quality={100}                                 
                                     priority
                                 />
                             </>
@@ -126,12 +134,12 @@ export default function Hero() {
                         )}
                     </div>
                     <div className={styles.textContainer}>
-                        <CtaButtons y={y} />
+                        <CtaButtons internalNav={hasNavigatedFromInternalPage} y={y} />
                         <h1 style={{
                             marginBottom: "-30px",
                         }}>
                             <p style={{
-                                animationDelay: y >= 33.34 ? "0s" : '7.4s',
+                                animationDelay: hasNavigatedFromInternalPage ? "0s" : y >= 33.34 ? "0s" : '7.4s',
                             }}>
                                 Productivity Tool
                             </p>
@@ -140,7 +148,7 @@ export default function Hero() {
                             fontWeight: '300',
                         }}>
                             <p style={{
-                                animationDelay: y >= 33.34 ? ".2s" : '7.6s',
+                                animationDelay: hasNavigatedFromInternalPage ? "0s" : y >= 33.34 ? ".2s" : '7.6s',
                             }}>
                                 Done Right
                             </p>

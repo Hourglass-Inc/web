@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    a {
+    span {
         text-decoration: none;
         color: white;
         font-weight: 300;
@@ -63,6 +63,7 @@
 }
 
 .cta {
+    display: flex;
     padding: 10px;
     width: fit-content;
     .communityButton {
@@ -79,6 +80,32 @@
         transition: background-color 0.3s ease;
         height: 40px;
     }
+}
+
+.communityCta {
+    height: 40px;
+    box-sizing: border-box;
+    background-color: rgba(65, 65, 65, 0.315);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.communityCta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.communityCta:active {
+    transform: scale(0.95);
+    opacity: 0.5;
 }
 
 /* Community modal styles */

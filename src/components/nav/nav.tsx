@@ -7,6 +7,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { IoMdGlobe } from 'react-icons/io';
+
+const MotionLink = motion(Link);
 
 // Animation variants for the community links
 const communityLinksVariants = {
@@ -142,7 +146,7 @@ export default function Nav() {
     return (
         <>
             <nav className={styles.nav}>
-                <div className={styles.logo}>
+                <Link href="/" className={styles.logo}>
                     <div style={{
                         position: 'relative',
                         width: '45px',
@@ -155,8 +159,8 @@ export default function Nav() {
                             objectPosition: 'center',
                         }} src={"/tymli.png"} alt='Tymli Icon'  fill />
                     </div>
-                    <a href="/">Tymli</a>
-                </div>
+                    <span>Tymli</span>
+                </Link>
                 <div className={styles.navLinks}>
                     <NavLink href="/" isActive={isNavLinkActive('/')}>Home</NavLink>
                     <NavLink href="/#features" isActive={isNavLinkActive('/#features')}>Features</NavLink>
@@ -165,14 +169,27 @@ export default function Nav() {
                 <div className={styles.cta}>
                     <motion.button 
                         onClick={() => setIsOpen(true)} 
+                        className={styles.communityCta}
+                    >
+                        <IoMdGlobe style={{
+                            fontSize: '20px',
+                        }} />
+                    </motion.button>
+                    <MotionLink
                         className={styles.communityButton}
+                        href={"/download"}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
                         variants={buttonVariants}
                         initial="rest"
                         whileHover="hover"
                         whileTap="tap"
                     >
-                        Community
-                    </motion.button>    
+                        Download
+                    </MotionLink>
                 </div>
                 
                 {/* Mobile hamburger menu button */}
@@ -296,19 +313,33 @@ export default function Nav() {
                         className={styles.cta}
                         variants={mobileNavLinkVariants}
                     >
-                        <motion.button 
-                            onClick={() => {
-                                setIsOpen(true);
-                                setMenuOpen(false); // Close mobile menu when opening community modal
-                            }} 
-                            className={styles.communityButton}
-                            variants={buttonVariants}
-                            initial="rest"
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            Community
-                        </motion.button>    
+                    <motion.button 
+                        onClick={() => {
+                            setIsOpen(true);
+                            setMenuOpen(false);
+                        }} 
+                        className={styles.communityCta}
+                    >
+                        <IoMdGlobe style={{
+                            fontSize: '20px',
+                        }} />
+                    </motion.button>
+                    <MotionLink
+                        className={styles.communityButton}
+                        href={"/download"}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                        onClick={() => setMenuOpen(false)}
+                        variants={buttonVariants}
+                        initial="rest"
+                        whileHover="hover"
+                        whileTap="tap"
+                    >
+                        Download
+                    </MotionLink>
                     </motion.div>
                     
                     {/* Close button at the bottom center */}

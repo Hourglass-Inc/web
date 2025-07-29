@@ -2,6 +2,7 @@
     position: relative;
     width: 50%;
     height: 100%;
+    min-height: 600px;
     display: flex;
     align-items: center;
     border-radius: 12px;
@@ -163,4 +164,8 @@
         font-size: 11px;
         padding: 4px 10px;
     }
+}
+
+@media screen and (max-width: 880px) {
+    
 }
