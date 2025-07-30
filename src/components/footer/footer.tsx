@@ -34,8 +34,8 @@ export default function Footer() {
           <div className={styles.footerSection}>
             <h4>Legal</h4>
             <ul>
-              <li><a href="#privacy">Privacy Policy</a></li>
-              <li><a href="#terms">Terms of Service</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/tos">Terms of Service</a></li>
             </ul>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Tymli. All rights reserved.</p>
           </div>
           <div className={styles.socialLinks}>
-            <a href="#" aria-label="Twitter">
+            <a href="https://x.com/tymliorg" aria-label="Twitter">
               <FaTwitter size={20} />
             </a>
             <a href="#" aria-label="Discord">

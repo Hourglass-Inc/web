@@ -89,7 +89,7 @@ export default function Community() {
     >
         <motion.div className={styles.communityLinks} variants={itemVariants}>
             <motion.a 
-              href="https://discord.gg/your-invite-code" 
+              href="https://discord.gg/zNyxPGTqwn" 
               target="_blank" 
               rel="noopener noreferrer"
               variants={itemVariants}
@@ -104,7 +104,7 @@ export default function Community() {
                 Discord
             </motion.a>
             <motion.a 
-              href="https://twitter.com/your-profile" 
+              href="https://x.com/tymliorg" 
               target="_blank" 
               rel="noopener noreferrer"
               variants={itemVariants}
