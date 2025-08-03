@@ -27,7 +27,7 @@ export default function Footer() {
             <h4>Company</h4>
             <ul>
               <li><a href="/about">About</a></li>
-              <li><a href="#mail">Mail</a></li>
+              <li><a href='mailto:jeepedia.in@gmail.com'>Mail</a></li>
             </ul>
           </div>
           
@@ -45,14 +45,14 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Tymli. All rights reserved.</p>
           </div>
           <div className={styles.socialLinks}>
-            <a href="https://x.com/tymliorg" aria-label="Twitter">
+            <a href="https://x.com/tymliorg" aria-label="Twitter" target='_blank' rel='noopener noreferrer'>
               <FaTwitter size={20} />
             </a>
-            <a href="#" aria-label="Discord">
+            <a href="https://discord.gg/zNyxPGTqwn" aria-label="Discord" target='_blank' rel='noopener noreferrer'>
               <FaDiscord size={20} />
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <FaLinkedin size={20} />
+            <a href="https://github.com/Tymli-Inc" aria-label="Github" target='_blank' rel='noopener noreferrer'>
+              <FaGithub size={20} />
             </a>
           </div>
         </div>
